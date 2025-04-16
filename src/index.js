@@ -1,1 +1,1 @@
-export { default as SearchComponent } from '@/src/components/PopUpSearcher/PopUpSearcher';
+export { default as SearchComponent } from './components/SearchComponent';
