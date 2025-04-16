@@ -2,6 +2,7 @@
   "name": "typesense_front",
   "version": "0.1.1",
   "private": false,
+  "main": "/components/PopUpSearcher/PopUpSearcher.jsx",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
