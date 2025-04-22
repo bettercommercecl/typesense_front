@@ -1,3 +1,5 @@
+'use client';
+
 import React, { useState, useEffect } from 'react';
 import { alpha, styled } from '@mui/material/styles';
 import InputLabel from '@mui/material/InputLabel';
@@ -83,7 +85,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
   },
 }));
 
-export default function FreeSolo( {inputHandler, isDoofinder} ) {
+export default function PopUpSearcher( {inputHandler, isDoofinder} ) {
 
   return (
     <Search>
