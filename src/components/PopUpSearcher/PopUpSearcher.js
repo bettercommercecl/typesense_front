@@ -2,6 +2,7 @@
 
 import React from 'react';
 import { createRoot } from 'react-dom/client';
+import { styled, alpha } from '@mui/material/styles';
 import InputBase from '@mui/material/InputBase';
 import SearchIcon from '@mui/icons-material/Search';
 
@@ -34,7 +35,7 @@ class PopUpSearcher extends HTMLElement {
 
   render() {
     const container = document.createElement('div');
-    const root = createRoot(container); // Crear el root
+    const root = createRoot(container);
     root.render(
       <Search>
         <SearchIconWrapper>
@@ -45,7 +46,6 @@ class PopUpSearcher extends HTMLElement {
     );
     this.shadowRoot.appendChild(container);
   }
-  
 }
 
 // Definir el nuevo elemento
