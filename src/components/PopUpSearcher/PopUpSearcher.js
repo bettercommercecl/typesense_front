@@ -1,8 +1,7 @@
 'use client';
 
 import React from 'react';
-import ReactDOM from 'react-dom';
-import { alpha, styled } from '@mui/material/styles';
+import { createRoot } from 'react-dom/client';
 import InputBase from '@mui/material/InputBase';
 import SearchIcon from '@mui/icons-material/Search';
 
@@ -35,17 +34,18 @@ class PopUpSearcher extends HTMLElement {
 
   render() {
     const container = document.createElement('div');
-    ReactDOM.render(
+    const root = createRoot(container); // Crear el root
+    root.render(
       <Search>
         <SearchIconWrapper>
           <SearchIcon />
         </SearchIconWrapper>
         <InputBase placeholder="Buscar" inputProps={{ 'aria-label': 'search' }} />
-      </Search>,
-      container
+      </Search>
     );
     this.shadowRoot.appendChild(container);
   }
+  
 }
 
 // Definir el nuevo elemento
