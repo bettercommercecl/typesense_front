@@ -48,5 +48,7 @@ class PopUpSearcher extends HTMLElement {
   }
 }
 
-// Definir el nuevo elemento
-customElements.define('pop-up-searcher', PopUpSearcher);
+// Solo registrar el componente si estamos en el navegador
+if (typeof window !== 'undefined') {
+  customElements.define('pop-up-searcher', PopUpSearcher);
+}

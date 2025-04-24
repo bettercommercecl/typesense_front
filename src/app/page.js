@@ -1,8 +1,13 @@
 'use client';
 
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import styles from './page.module.css';
-import '../components/PopUpSearcher/PopUpSearcher';
+import dynamic from 'next/dynamic';
+
+const PopUpSearcher = dynamic(
+  () => import('../components/PopUpSearcher/PopUpSearcher'),
+  { ssr: false }
+);
 
 export default function Home() {
   return (
