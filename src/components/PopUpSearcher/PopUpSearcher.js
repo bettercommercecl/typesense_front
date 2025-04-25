@@ -48,7 +48,10 @@ class PopUpSearcher extends HTMLElement {
   }
 }
 
-// Solo registrar el componente si estamos en el navegador
+// Exportar la clase para que pueda ser importada
+export { PopUpSearcher };
+
+// Registrar el componente si estamos en el navegador
 if (typeof window !== 'undefined') {
   customElements.define('pop-up-searcher', PopUpSearcher);
 }
