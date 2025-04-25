@@ -3,7 +3,18 @@ const path = require('path');
 
 // Leer el contenido del componente
 const componentPath = path.join(__dirname, '../src/components/PopUpSearcher/PopUpSearcher.js');
-const componentContent = fs.readFileSync(componentPath, 'utf8');
+let componentContent = fs.readFileSync(componentPath, 'utf8');
+
+// Agregar las importaciones necesarias al inicio del archivo
+const imports = `
+import React from 'react';
+import { createRoot } from 'react-dom/client';
+import { styled, alpha } from '@mui/material/styles';
+import InputBase from '@mui/material/InputBase';
+import SearchIcon from '@mui/icons-material/Search';
+`;
+
+componentContent = imports + componentContent;
 
 // Crear el directorio public si no existe
 const publicDir = path.join(__dirname, '../public');
