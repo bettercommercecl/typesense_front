@@ -26,32 +26,33 @@ const SearchIconWrapper = styled('div')(({ theme }) => ({
   justifyContent: 'center',
 }));
 
-class PopUpSearcher extends HTMLElement {
-  constructor() {
-    super();
-    this.attachShadow({ mode: 'open' });
-    this.render();
-  }
-
-  render() {
-    const container = document.createElement('div');
-    const root = createRoot(container);
-    root.render(
-      <Search>
-        <SearchIconWrapper>
-          <SearchIcon />
-        </SearchIconWrapper>
-        <InputBase placeholder="Buscar" inputProps={{ 'aria-label': 'search' }} />
-      </Search>
-    );
-    this.shadowRoot.appendChild(container);
-  }
-}
-
-// Exportar la clase para que pueda ser importada
-export { PopUpSearcher };
-
-// Registrar el componente si estamos en el navegador
+// Solo definir la clase si estamos en el navegador
+let PopUpSearcher;
 if (typeof window !== 'undefined') {
+  PopUpSearcher = class extends HTMLElement {
+    constructor() {
+      super();
+      this.attachShadow({ mode: 'open' });
+      this.render();
+    }
+
+    render() {
+      const container = document.createElement('div');
+      const root = createRoot(container);
+      root.render(
+        <Search>
+          <SearchIconWrapper>
+            <SearchIcon />
+          </SearchIconWrapper>
+          <InputBase placeholder="Buscar" inputProps={{ 'aria-label': 'search' }} />
+        </Search>
+      );
+      this.shadowRoot.appendChild(container);
+    }
+  };
+
+  // Registrar el componente
   customElements.define('pop-up-searcher', PopUpSearcher);
 }
+
+export { PopUpSearcher };
