@@ -1,7 +1,9 @@
-// export { PopUpSearcher } from './components/PopUpSearcher/PopUpSearcher';
+'use client';
 
-export default function PopUpSearcher(name) {
+import PopUpSearcher from './components/PopUpSearcher/PopUpSearcher.jsx';
 
-  return `hello ${name}`
-  
-}
+// Export the component as default
+export default PopUpSearcher;
+
+// Also export as a named export
+export { PopUpSearcher };
