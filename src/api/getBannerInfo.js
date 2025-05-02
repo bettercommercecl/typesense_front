@@ -1,12 +1,9 @@
 import axios from 'axios';
-const apiUrl = process.env.NEXT_PUBLIC_API_URL;
 
-console.log('api url:', apiUrl);
-
-async function HomeBannerInfo() {
+async function HomeBannerInfo(apiUrl) {
 
 	try {
-		const url = `${apiUrl}.cl/api/showbanner`
+		const url = `${apiUrl}/showbanner`
 		const response = await axios({
 			method: 'get',
 			url: url,

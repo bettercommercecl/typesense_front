@@ -1,68 +1,57 @@
-.popup-searcher-container {
+/* SearchBar.css */
+
+.searchContainer {
   position: relative;
-  display: inline-block;
+  border-radius: 24px; /* Ajusta según tus necesidades */
+  background-color: rgba(255, 255, 255, 0.15);
+  margin-left: 0;
+  width: 100%;
 }
 
-.search-button {
-  background: none;
-  border: none;
-  padding: 8px;
-  cursor: pointer;
+.searchContainer.expanded {
+  width: 590px; /* Ancho máximo cuando está expandido */
+}
+
+.searchContainer:hover {
+  background-color: rgba(255, 255, 255, 0.25);
+}
+
+.searchIconWrapper {
+  padding: 0 16px; /* Ajusta según tus necesidades */
+  height: 100%;
+  position: absolute;
+  pointer-events: none;
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 50%;
-  transition: background-color 0.2s;
 }
 
-.search-button:hover {
-  background-color: rgba(0, 0, 0, 0.04);
+.searchIcon {
+  width: 24px; /* Ajusta según tus necesidades */
+  height: 24px; /* Ajusta según tus necesidades */
 }
 
-.search-icon {
-  width: 24px;
-  height: 24px;
-  fill: currentColor;
-}
-
-.popup-content {
-  position: absolute;
-  top: 100%;
-  right: 0;
-  margin-top: 8px;
-  background-color: white;
-  border-radius: 4px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1), 0 4px 8px rgba(0, 0, 0, 0.1);
-  width: 300px;
-  z-index: 1000;
-}
-
-.search-input-container {
-  padding: 16px;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.12);
-}
-
-.search-input {
+.searchInput {
+  color: #000000;
+  font-weight: bold;
+  padding: 8px 8px 8px 40px; /* Espacio para el icono */
+  background-color: #e3e3e8;
+  border: none;
+  border-radius: 24px; /* Ajusta según tus necesidades */
   width: 100%;
-  padding: 8px 12px;
-  border: 1px solid rgba(0, 0, 0, 0.23);
-  border-radius: 4px;
-  font-size: 16px;
+  font-family: 'Outfit', sans-serif; /* Asegúrate de que esta fuente esté disponible */
+  transition: box-shadow 0.2s ease-in-out;
+}
+
+.searchInput:focus {
   outline: none;
-  transition: border-color 0.2s;
+  box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25); /* Cambia el color según tu tema */
 }
 
-.search-input:focus {
-  border-color: #1976d2;
+.closeButton{
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 900;
 }
-
-.search-results {
-  max-height: 400px;
-  overflow-y: auto;
-}
-
-.no-results {
-  padding: 16px;
-  text-align: center;
-  color: rgba(0, 0, 0, 0.6);
-} 
