@@ -1,6 +1,8 @@
 'use client';
 
+import React, { useRef } from 'react';
 import HomeBannerInfo from '../../api/getBannerInfo';
+import CloseIcon from '@mui/icons-material/Close';
 import './PopUpSearcher.css';
 
 const PopUpSearcher = ({searchQuery,setSearchQuery,results,setResults,loading,setLoading,apiUrl,expandSearch,setExpandSearch}) => {
@@ -10,20 +12,24 @@ const PopUpSearcher = ({searchQuery,setSearchQuery,results,setResults,loading,se
     setSearchQuery(query);
     if (query) {
       setLoading(true);
-      try {
-        const data = await HomeBannerInfo(apiUrl); // Llama a la API
-        setResults(data);
-      } catch (error) {
-        console.error('Error fetching data:', error);
-      } finally {
-        setLoading(false);
-      }
+      document.querySelector('.searchInput').classList.add('expanded');
+      document.querySelector('.dropDown').classList.add('expanded');
+      // try {
+      //   const data = await HomeBannerInfo(apiUrl); // Llama a la API
+      //   setResults(data);
+      // } catch (error) {
+      //   console.error('Error fetching data:', error);
+      // } finally {
+      //   setLoading(false);
+      // }
     } else {
       setResults([]); // Limpia los resultados si no hay consulta
+      document.querySelector('.searchInput').classList.remove('expanded');
+      document.querySelector('.dropDown').classList.remove('expanded');
     }
   };
 
-  const handleCloseSearcher = async (e) => {
+  const handleCloseSearcher = (e) => {
     console.log('HELLO 2');
     setExpandSearch(false);
   };
@@ -45,21 +51,25 @@ const PopUpSearcher = ({searchQuery,setSearchQuery,results,setResults,loading,se
         type="text"
         onChange={handleSearch}
         placeholder="Buscar"
-        className="searchInput"
-        id={apiUrl === 'false' ? '' : "search-doofinder"}
+        className={`searchInput`}
+        // id={apiUrl === 'false' ? '' : "search-doofinder"}
         aria-label="search"
       />
       <button 
         className="closeButton" 
-        // onClick={handleCloseSearcher} // Esto no esta teniendo efecto
         onClick={(event) => {
           event.stopPropagation();
           setExpandSearch(false); // Expande la búsqueda
         }}
         aria-label="Cerrar búsqueda"
       >
-        &times; {/* Este es el símbolo de la "X" */}
+        &times;
       </button>
+      <div className={`dropDown ${expandSearch && 'expanded'}`}>
+        <div className="content">
+          <p>{searchQuery}</p>
+        </div>
+      </div>
     </div>
   );
 };
