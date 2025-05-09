@@ -1,0 +1,126 @@
+.searchContainer {
+  position: relative;
+  border-radius: 24px;
+  background-color: rgba(255, 255, 255, 0.15);
+  margin-left: 0;
+  width: 200px;
+}
+
+.expanded {
+  animation: growWidthRightToLeft 0.5s forwards;
+}
+
+.searchContainer:hover {
+  background-color: rgba(255, 255, 255, 0.25);
+}
+
+@keyframes growWidthRightToLeft {
+  0% {
+    width: 200px;
+  }
+  100% {
+    width: 590px;
+  }
+}
+
+.searchIconWrapper {
+  padding: 0 16px;
+  height: 100%;
+  position: absolute;
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.searchIcon {
+  width: 24px;
+  height: 24px;
+}
+
+.searchInput {
+  color: #000000;
+  font-weight: bold;
+  padding: 8px 8px 8px 40px;
+  background-color: #e3e3e8;
+  border: none;
+  border-radius: 16px;
+  width: 100%;
+  font-family: 'Outfit', sans-serif;
+  transition: box-shadow 0.2s ease-in-out;
+}
+
+.searchInput:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
+}
+
+.searchInput.inputExpanded{
+  border-radius: 8px 8px 0 0;
+}
+
+.closeButton {
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 900;
+  background-color: transparent;
+  outline: none;
+  border: 0;
+  font-size: 1.5rem;
+}
+
+.dropDown {
+  position: absolute;
+  max-height: 0;
+  overflow: hidden;
+  background-color: #e3e3e8;
+  width: 100%;
+  height: 500px;
+  padding: 0 24px;
+  z-index: 200;
+  border-radius: 0 0 8px 8px;
+  opacity: 0;
+  transition: max-height 0.3s ease, opacity 0.3s ease;
+}
+
+.dropDown.inputExpanded {
+  /* border-radius: 8px 8px 0 0; */
+  max-height: 500px;
+  opacity: 1;
+}
+
+.content {
+  position: relative;
+  background-color: #e3e3e8;
+  z-index: 200;
+}
+
+.unlistOrder {
+  padding-left: 0;
+  font-weight: bold;
+  font-size: 1rem;
+}
+
+.unlistOrder li {
+  list-style: none;
+  padding-left: 16px;
+  font-weight: 300;
+}
+
+.unlistOrder li:first-child {
+  padding-top: 8px;
+}
+
+.titleCards {
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+.gridContainer {
+  display: grid;
+  grid-template-columns: 0.5fr 0.5fr;
+  gap: 1rem;
+  margin-top: 16px;
+}
