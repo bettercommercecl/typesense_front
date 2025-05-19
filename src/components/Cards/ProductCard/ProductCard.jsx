@@ -13,19 +13,15 @@ const ProductCard = ({ product }) => {
         />
       </figure>
       <div className={styles.footer}>
-        <p className={styles.brandTitle}>{product.brand}</p>
-        <h3 className={styles.title}>{product?.title}</h3>
+        <h3 className={styles.title}>{product.brand}</h3>
+        <p className={styles.brandTitle}>{product?.title}</p>
         <div className={styles.priceRow}>
           {product?.discount_price > 0 && (
-            <h4 className={styles.priceRowDiscount}>
-              <p>{product.discount_price}</p>
-            </h4>
+            <h4 className={styles.priceRowDiscount}>{product.discount_price}</h4>
           )}
           {product.discount_price > 0 ? (
             product?.discount_rate != '0%' && (
-              <span className={styles.priceRowNormal}>
-                <p>{product.normal_price}</p>
-              </span>
+              <p className={styles.priceRowNormal}>{product.normal_price}</p>
             )
           ) : (
             <h4 className={styles.priceRowDiscount}>

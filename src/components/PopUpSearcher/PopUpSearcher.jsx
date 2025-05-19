@@ -62,7 +62,7 @@ const PopUpSearcher = ({
       >
         &times;
       </button>
-      <div className={`${styles.dropDown} ${expandSearch ? styles.inputExpanded : ''}`}>
+      <div className={`${styles.dropDown} ${expandSearch && searchQuery ? styles.inputExpanded : ''}`}>
         <div className={styles.content}>
           <ul className={styles.unlistOrder}>
             Búsquedas Recientes:

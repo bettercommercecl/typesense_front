@@ -11,19 +11,36 @@
 }
 
 .footer {
+  padding: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
 }
 
-.brandTitle {
+.title{
+  font-size: 13.5px;
+  line-height: 14px;
+  font-weight: 600;
 }
 
-.title {
+.brandTitle{
+  font-size: 0.9rem;
 }
 
 .priceRow {
+  display: flex;
+  align-items: center;
+  gap: 4px;
 }
 
 .priceRowDiscount {
+  font-size: 16px;
+  line-height: 18px;
 }
 
-.priceRowNormal {
+.priceRowNormal{
+  font-size: 14px;
+  line-height: 16px;
+  text-decoration-line: line-through;
+  color: #666687;;
 }
