@@ -1,9 +1,7 @@
 'use client';
 
 import PopUpSearcher from './components/PopUpSearcher/PopUpSearcher.jsx';
+import InputSearch from './components/InputSearch/InputSearch.jsx';
 
-// Export the component as default
-export default PopUpSearcher;
-
-// Also export as a named export
-export { PopUpSearcher };
+// Export both components as named exports
+export { PopUpSearcher, InputSearch };
