@@ -6468,13 +6468,13 @@ const products = [
 ]
 
 const InputSearch = ({
+	setTypesenseProducts,
   searchQuery,
   setSearchQuery,
   setLoading,
   expandSearch,
   setExpandSearch,
   onInputChange,
-  className
 }) => {
 
   const handleSearch = (e) => {
@@ -6482,10 +6482,12 @@ const InputSearch = ({
     setSearchQuery(query);
     
     if (query) {
-      setLoading(true);
       document.querySelector(`.${styles.searchInput}`).classList.add(styles.inputExpanded);
+      setLoading(true);
+			setTypesenseProducts(products);
     } else {
       document.querySelector(`.${styles.searchInput}`).classList.remove(styles.inputExpanded);
+			setTypesenseProducts([]);
     }
 
     // Call the optional onInputChange callback if provided
@@ -6496,7 +6498,7 @@ const InputSearch = ({
 
   return (
     <div
-      className={`${styles.searchContainer} ${expandSearch ? styles.expanded : ''} ${className || ''}`}
+      className={`${styles.searchContainer} ${expandSearch ? styles.expanded : ''}`}
       onClick={(event) => {
         event.preventDefault();
         setExpandSearch(true);

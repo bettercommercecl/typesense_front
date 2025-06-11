@@ -7,6 +7,7 @@ import InputSearch from '../InputSearch/InputSearch';
 import styles from './PopUpSearcher.module.css';
 
 const PopUpSearcher = ({
+  setTypesenseProducts,
   searchQuery,
   setSearchQuery,
   results,
@@ -30,6 +31,7 @@ const PopUpSearcher = ({
   return (
     <div className={styles.container}>
       <InputSearch
+        setTypesenseProducts={setTypesenseProducts}
         searchQuery={searchQuery}
         setSearchQuery={setSearchQuery}
         setLoading={setLoading}

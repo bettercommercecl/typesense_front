@@ -1,60 +1,72 @@
 .searchContainer {
   position: relative;
-  display: flex;
-  align-items: center;
-  width: 100%;
-  max-width: 600px;
-  margin: 0 auto;
-  background-color: #fff;
   border-radius: 24px;
-  padding: 8px 16px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  transition: all 0.3s ease;
+  background-color: rgba(255, 255, 255, 0.15);
+  margin-left: 0;
+  width: 200px;
 }
 
-.searchContainer.expanded {
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+.expanded {
+  animation: growWidthRightToLeft 0.5s forwards;
+}
+
+.searchContainer:hover {
+  background-color: rgba(255, 255, 255, 0.25);
+}
+
+@keyframes growWidthRightToLeft {
+  0% {
+    width: 200px;
+  }
+  100% {
+    width: 590px;
+  }
 }
 
 .searchIconWrapper {
+  padding: 0 16px;
+  height: 100%;
+  position: absolute;
+  pointer-events: none;
   display: flex;
   align-items: center;
-  margin-right: 8px;
+  justify-content: center;
 }
 
 .searchIcon {
   width: 24px;
   height: 24px;
-  fill: #666;
 }
 
 .searchInput {
-  flex: 1;
+  color: #000000;
+  font-weight: bold;
+  padding: 8px 8px 8px 40px;
+  background-color: #F2F2F2;
   border: none;
-  outline: none;
-  font-size: 16px;
-  padding: 8px 0;
-  background: transparent;
-  transition: all 0.3s ease;
+  border-radius: 16px;
+  width: 100%;
+  font-family: 'Outfit', sans-serif;
+  transition: box-shadow 0.2s ease-in-out;
 }
 
-.searchInput.inputExpanded {
-  width: 100%;
+.searchInput:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
+}
+
+.searchInput.inputExpanded{
+  border-radius: 8px 8px 0 0;
 }
 
 .closeButton {
-  background: none;
-  border: none;
-  font-size: 24px;
-  color: #666;
-  cursor: pointer;
-  padding: 0 8px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: color 0.3s ease;
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 900;
+  background-color: transparent;
+  outline: none;
+  border: 0;
+  font-size: 1.5rem;
 }
-
-.closeButton:hover {
-  color: #333;
-} 
