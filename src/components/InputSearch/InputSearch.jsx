@@ -1,35 +1,39 @@
 'use client';
 
 import React from 'react';
-import products from "../../utils/products.json";
+import getRequest from '../../api/getRequest';
 import styles from './InputSearch.module.css';
 
 const InputSearch = ({
 	handleKeyDown,
-	setTypesenseProducts,
 	searchQuery,
 	setSearchQuery,
+	setResults,
 	setLoading,
 	expandSearch,
 	setExpandSearch,
 	onInputChange,
 }) => {
 
-	
-	const handleSearch = (e) => {
-		console.log('products:', products);
+	const handleSearch = async (e) => {
 		const query = e.target.value;
 		setSearchQuery(query);
-		
-		console.log('query:', query);
 
 		if (query) {
 			setLoading(true);
-			setTypesenseProducts(products);
+			try {
+				const results = await getRequest(query);
+				// console.log('results from inputSearch:', results);
+				setResults(results);
+			} catch (error) {
+				console.error(error);
+				setResults([]);
+			}
+			setLoading(false);
 			document.querySelector(`.${styles.searchInput}`).classList.add(styles.inputExpanded);
 		} else {
 			setLoading(false);
-			setTypesenseProducts([]);
+			setResults([]);
 			document.querySelector(`.${styles.searchInput}`).classList.remove(styles.inputExpanded);
 		}
 
