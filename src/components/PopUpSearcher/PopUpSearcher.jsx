@@ -42,11 +42,11 @@ const PopUpSearcher = ({
       />
       <div className={`${styles.dropDown} ${expandSearch && searchQuery ? styles.inputExpanded : ''}`}>
         <div className={styles.content}>
-          <ul className={styles.unlistOrder}>
+          {/* <ul className={styles.unlistOrder}>
             Búsquedas Recientes:
             <li>Bicicleta Spinning Magnética</li>
             <li>Trotadora Eléctrica E470 Pro</li>
-          </ul>
+          </ul> */}
           <h4 className={styles.titleCards}>Sugerencias de búsqueda</h4>
           <div className={styles.gridContainer}> 
             {products.map((item) => (
