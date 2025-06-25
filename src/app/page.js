@@ -12,7 +12,7 @@ export default function Home() {
   return (
     <div className={styles.page}>
       <main className={styles.main}>
-        <PopUpSearcher 
+        <PopUpSearcher
           searchQuery={searchQuery}
           setSearchQuery={setSearchQuery}
           results={results}

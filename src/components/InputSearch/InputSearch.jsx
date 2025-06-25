@@ -23,7 +23,7 @@ const InputSearch = ({
 			setLoading(true);
 			try {
 				const results = await getRequest(query);
-				// console.log('results from inputSearch:', results);
+				console.log('results from inputSearch:', results);
 				setResults(results);
 			} catch (error) {
 				console.error(error);
