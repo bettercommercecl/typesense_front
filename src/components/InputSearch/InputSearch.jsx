@@ -33,13 +33,21 @@ const InputSearch = ({
 			document.querySelector(`.${styles.searchInput}`).classList.add(styles.inputExpanded);
 		} else {
 			setLoading(false);
-			setResults([]);
+			// setResults([]);
 			document.querySelector(`.${styles.searchInput}`).classList.remove(styles.inputExpanded);
 		}
 
 		if (onInputChange) {
 			onInputChange(query);
 		}
+	};
+
+	const handleCloseSearch = (event) => {
+		event.stopPropagation();
+		setExpandSearch(false);
+		setSearchQuery('');
+		setResults([]);
+		document.querySelector(`.${styles.searchInput}`).classList.remove(styles.inputExpanded);
 	};
 
 	return (
@@ -66,10 +74,7 @@ const InputSearch = ({
 			/>
 			<button 
 				className={styles.closeButton}
-				onClick={(event) => {
-					event.stopPropagation();
-					setExpandSearch(false);
-				}}
+				onClick={handleCloseSearch}
 				aria-label="Cerrar búsqueda"
 			>
 				&times;
