@@ -1,10 +1,10 @@
 'use client';
 
-import React from 'react';
+import React, { forwardRef } from 'react';
 import getRequest from '../../api/getRequest';
 import styles from './InputSearch.module.css';
 
-const InputSearch = ({
+const InputSearch = forwardRef(({
 	handleKeyDown,
 	searchQuery,
 	setSearchQuery,
@@ -13,7 +13,7 @@ const InputSearch = ({
 	expandSearch,
 	setExpandSearch,
 	onInputChange,
-}) => {
+}, ref) => {
 
 	const handleSearch = async (e) => {
 		const query = e.target.value;
@@ -23,7 +23,6 @@ const InputSearch = ({
 			setLoading(true);
 			try {
 				const results = await getRequest(query);
-				console.log('results from inputSearch:', results);
 				setResults(results);
 			} catch (error) {
 				console.error(error);
@@ -64,6 +63,7 @@ const InputSearch = ({
 				</svg>
 			</div>
 			<input 
+			 	ref={ref} 
 				type="text"
 				onChange={handleSearch}
 				onKeyDown={handleKeyDown}
@@ -81,6 +81,6 @@ const InputSearch = ({
 			</button>
 		</div>
 	);
-};
+});
 
 export default InputSearch; 
