@@ -5,6 +5,7 @@ import getRequest from '../../api/getRequest';
 import styles from './InputSearch.module.css';
 
 const InputSearch = forwardRef(({
+	typesenseCollection,
 	handleKeyDown,
 	searchQuery,
 	setSearchQuery,
@@ -22,7 +23,7 @@ const InputSearch = forwardRef(({
 		if (query) {
 			setLoading(true);
 			try {
-				const results = await getRequest(query);
+				const results = await getRequest({query,typesenseCollection});
 				setResults(results);
 			} catch (error) {
 				console.error(error);
