@@ -50,7 +50,14 @@ const InputSearch = forwardRef(({
 		setExpandSearch(false);
 		setSearchQuery('');
 		setResults([]);
-		document.querySelector(`.${styles.searchInput}`).classList.remove(styles.inputExpanded);
+		if (ref && ref.current) {
+			ref.current.classList.remove(styles.inputExpanded);
+		} else {
+			const inputEl = document.querySelector(`.${styles.searchInput}`);
+			if (inputEl) {
+				inputEl.classList.remove(styles.inputExpanded);
+			}
+		}
 		if (ref && ref.current) {
 			ref.current.blur(); // Quita el foco del input
 		}
