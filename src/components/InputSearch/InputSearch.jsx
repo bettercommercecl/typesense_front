@@ -1,6 +1,6 @@
 'use client';
 
-import React, { forwardRef } from 'react';
+import React, { forwardRef, useEffect } from 'react';
 import getRequest from '../../api/getRequest';
 import styles from './InputSearch.module.css';
 
@@ -49,6 +49,18 @@ const InputSearch = forwardRef(({
 		setResults([]);
 		document.querySelector(`.${styles.searchInput}`).classList.remove(styles.inputExpanded);
 	};
+
+	useEffect(() => {
+		const onScroll = (event) => {
+			if (window.scrollY > 20 && expandSearch) {
+				handleCloseSearch(event);
+			}
+		};
+		window.addEventListener('scroll', onScroll);
+		return () => {
+			window.removeEventListener('scroll', onScroll);
+		};
+	}, [expandSearch]);
 
 	return (
 		<div
