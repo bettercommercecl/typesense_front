@@ -3,6 +3,7 @@
 import React, { forwardRef, useEffect } from 'react';
 import getRequest from '../../api/getRequest';
 import styles from './InputSearch.module.css';
+import { useRouter } from 'next/router';
 
 const InputSearch = forwardRef(({
 	typesenseCollection,
@@ -16,6 +17,7 @@ const InputSearch = forwardRef(({
 	onInputChange,
 	dropdownRef,
 }, ref) => {
+	const router = useRouter();
 
 	// search products in the getRequest endpoint
 	const handleSearch = async (e) => {
@@ -66,7 +68,7 @@ const InputSearch = forwardRef(({
 	// Close the input when the user scrolls
 	useEffect(() => {
 		const onScroll = (event) => {
-			if (window.scrollY > 200 && expandSearch) {
+			if (window.scrollY > 100 && expandSearch) {
 				handleCloseSearch(event);
 			}
 		};
@@ -94,6 +96,17 @@ const InputSearch = forwardRef(({
 		};
 	}, [expandSearch, ref, dropdownRef]);
 
+	// Close the input when the user changes the route
+	useEffect(() => {
+		const handleRouteChange = () => {
+			handleCloseSearch({ stopPropagation: () => {} });
+		};
+		router.events.on('routeChangeStart', handleRouteChange);
+		return () => {
+			router.events.off('routeChangeStart', handleRouteChange);
+		};
+	}, [router]);
+
 	return (
 		<div
 			className={`${styles.searchContainer} ${expandSearch ? styles.expanded : ''}`}
@@ -108,7 +121,7 @@ const InputSearch = forwardRef(({
 				</svg>
 			</div>
 			<input 
-			 	ref={ref} 
+				ref={ref} 
 				type="text"
 				onChange={handleSearch}
 				onKeyDown={handleKeyDown}
@@ -128,4 +141,4 @@ const InputSearch = forwardRef(({
 	);
 });
 
-export default InputSearch; 
+export default InputSearch;
