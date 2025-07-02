@@ -14,8 +14,10 @@ const InputSearch = forwardRef(({
 	expandSearch,
 	setExpandSearch,
 	onInputChange,
+	dropdownRef,
 }, ref) => {
 
+	// search products in the getRequest endpoint
 	const handleSearch = async (e) => {
 		const query = e.target.value;
 		setSearchQuery(query);
@@ -42,17 +44,22 @@ const InputSearch = forwardRef(({
 		}
 	};
 
+	// Close the input when the user clicks the close button
 	const handleCloseSearch = (event) => {
 		event.stopPropagation();
 		setExpandSearch(false);
 		setSearchQuery('');
 		setResults([]);
 		document.querySelector(`.${styles.searchInput}`).classList.remove(styles.inputExpanded);
+		if (ref && ref.current) {
+			ref.current.blur(); // Quita el foco del input
+		}
 	};
 
+	// Close the input when the user scrolls
 	useEffect(() => {
 		const onScroll = (event) => {
-			if (window.scrollY > 20 && expandSearch) {
+			if (window.scrollY > 200 && expandSearch) {
 				handleCloseSearch(event);
 			}
 		};
@@ -61,6 +68,24 @@ const InputSearch = forwardRef(({
 			window.removeEventListener('scroll', onScroll);
 		};
 	}, [expandSearch]);
+
+	// Close the input when the user clicks outside
+	useEffect(() => {
+		const handleClickOutside = (event) => {
+			if (
+				expandSearch && ref &&
+				ref.current &&
+				!ref.current.contains(event.target) &&
+				(!dropdownRef || !dropdownRef.current || !dropdownRef.current.contains(event.target))
+			) {
+				handleCloseSearch(event);
+			}
+		};
+		document.addEventListener('mousedown', handleClickOutside);
+		return () => {
+			document.removeEventListener('mousedown', handleClickOutside);
+		};
+	}, [expandSearch, ref, dropdownRef]);
 
 	return (
 		<div
