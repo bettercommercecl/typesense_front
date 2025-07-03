@@ -52,7 +52,7 @@ export default function useInputSearch({
       }
       setLoading(false);
       document.querySelector(`.${styles.searchInput}`)?.classList.add(styles.inputExpanded);
-    }, 400);
+    }, 180);
 
     if (onInputChange) {
       onInputChange(query);
